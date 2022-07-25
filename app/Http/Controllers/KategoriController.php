@@ -17,9 +17,11 @@ class KategoriController extends Controller
         return view('kategori.index');
     }
 
+
     public function data()
     {
         $kategori = Kategori::orderBy('id_kategori', 'desc')->get();
+
 
         return datatables()
             ->of($kategori)
@@ -27,8 +29,8 @@ class KategoriController extends Controller
             ->addColumn('aksi', function ($kategori) {
                 return '
                 <div class="btn-group">
-                    <button onclick="editForm(`'. route('kategori.update', $kategori->id_kategori) .'`)" class="btn btn-xs btn-info btn-flat"><i class="fa fa-pencil"></i></button>
-                    <button onclick="deleteData(`'. route('kategori.destroy', $kategori->id_kategori) .'`)" class="btn btn-xs btn-danger btn-flat"><i class="fa fa-trash"></i></button>
+                    <button onclick="editForm(`' . route('kategori.update', $kategori->id_kategori) . '`)" class="btn btn-xs btn-info btn-flat"><i class="fa fa-pencil"></i></button>
+                    <button onclick="deleteData(`' . route('kategori.destroy', $kategori->id_kategori) . '`)" class="btn btn-xs btn-danger btn-flat"><i class="fa fa-trash"></i></button>
                 </div>
                 ';
             })
